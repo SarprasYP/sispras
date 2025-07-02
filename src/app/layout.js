@@ -1,4 +1,5 @@
 import Provider from "@/provider/Provider";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "Sispras",
@@ -12,7 +13,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Provider>{children}</Provider>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Provider>{children}</Provider>
+        </Suspense>
       </body>
     </html>
   );
