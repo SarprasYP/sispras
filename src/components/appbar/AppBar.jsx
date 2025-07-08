@@ -27,22 +27,22 @@ export const NAVIGATION = [
     title: "Inventaris Tetap",
   },
   {
-    segment: "inventaris-tetap",
+    segment: "dashboard/inventaris-tetap/aset",
     title: "Aset",
     icon: <InventoryIcon />,
   },
   {
-    segment: "inventaris-tetap/barang",
-    title: "Barang",
+    segment: "dashboard/inventaris-tetap/produk",
+    title: "Produk",
     icon: <ViewStreamIcon />,
   },
   {
-    segment: "inventaris-tetap/ruangan",
+    segment: "dashboard/inventaris-tetap/ruangan",
     title: "Ruangan",
     icon: <DoorBackIcon />,
   },
   {
-    segment: "inventaris-tetap/merk",
+    segment: "dashboard/inventaris-tetap/merk",
     title: "Merk",
     icon: <TurnedInIcon />,
   },

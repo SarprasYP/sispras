@@ -5,7 +5,9 @@ import { PageContainer } from "@toolpad/core/PageContainer";
 
 export default function Layout({ children }) {
   return (
-    <DashboardLayout>
+    <DashboardLayout
+    sidebarExpandedWidth={240}
+    >
       <PageContainer>{children}</PageContainer>
     </DashboardLayout>
   );

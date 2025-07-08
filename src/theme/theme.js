@@ -66,7 +66,7 @@ const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 8,
+          borderRadius: 4,
           textTransform: "none",
         },
       },
@@ -95,6 +95,13 @@ const theme = createTheme({
           },
         },
       },
+    },
+    MuiDivider:{
+      styleOverrides:{
+        root:{
+          borderColor: "#FECE1F"
+        }
+      }
     },
   },
 });

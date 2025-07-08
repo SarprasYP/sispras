@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { useSession, SessionProvider } from 'next-auth/react';
+import { signIn, signOut } from 'next-auth/react';
 
 // MUI and Toolpad Imports
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
