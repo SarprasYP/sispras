@@ -112,7 +112,7 @@ export default function ConsumableProductPage() {
     {
       field: "categoryName", headerName: "Kategori", flex: 1, filterOperators: getGridStringOperators().filter(
         (operator) => operator.value === 'contains'
-      ), valueGetter: (value, row) => row.category?.name || "-"
+      ),
     },
     {
       field: "measurement_unit", headerName: "Satuan Unit", flex: 1, filterOperators: getGridStringOperators().filter(
@@ -152,7 +152,7 @@ export default function ConsumableProductPage() {
       ),
     },
   ];
-
+  
   return (
     <Stack >
       <Divider sx={{ mb: 2 }} />
