@@ -32,7 +32,7 @@ export async function GET(request, { params }) {
     const status = error.isNotFound ? 404 : error.status || 500;
     const message = error.message || "Terjadi kesalahan pada server.";
 
-    console.error(`Error in GET /api/consumable-products/${params.id}:`, error);
+    console.error(`Error in GET /api/consumable-products/${id}:`, error);
 
     return NextResponse.json({ success: false, message }, { status });
   }
@@ -71,7 +71,7 @@ export async function PUT(request, { params }) {
     const message = error.message || "Terjadi kesalahan pada server.";
     const errors = error.isValidationError ? error.errors : undefined;
 
-    console.error(`Error in PUT /api/consumable-products/${params.id}:`, error);
+    console.error(`Error in PUT /api/consumable-products/${id}:`, error);
 
     return NextResponse.json({ success: false, message, errors }, { status });
   }
@@ -103,7 +103,7 @@ export async function DELETE(request, { params }) {
         : 500;
     const message = error.message || "Terjadi kesalahan pada server.";
 
-    console.error(`Error in DELETE /api/consumable-products/${params.id}:`, error);
+    console.error(`Error in DELETE /api/consumable-products/${id}:`, error);
 
     return NextResponse.json({ success: false, message }, { status });
   }

@@ -7,7 +7,11 @@ import mongoose, { Types } from "mongoose";
 import { z } from "zod";
 import Asset from "@/models/Asset";
 import { generateSerialNumber } from "@/lib/services/generateSerialNumber";
+import Brand from "@/models/Brand";
+import Category from "@/models/Category";
+import Location from "@/models/Location";
 import Product from "@/models/Product";
+
 
 // Skema untuk form pendaftaran BANYAK aset
 const assetBulkSchema = z.object({

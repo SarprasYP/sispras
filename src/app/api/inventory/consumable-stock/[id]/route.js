@@ -32,7 +32,7 @@ export async function GET(request, { params }) {
     const status = error.isNotFound ? 404 : error.status || 500;
     const message = error.message || "Terjadi kesalahan pada server.";
     
-    console.error(`Error in GET /api/consumable-stock/${params.id}:`, error);
+    console.error(`Error in GET /api/consumable-stock/${id}:`, error);
     
     return NextResponse.json({ success: false, message }, { status });
   }

@@ -152,7 +152,8 @@ export default function ConsumableProductPage() {
       ),
     },
   ];
-  
+  console.log(rows);
+
   return (
     <Stack >
       <Divider sx={{ mb: 2 }} />

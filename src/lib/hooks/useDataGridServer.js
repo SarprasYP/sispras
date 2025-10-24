@@ -28,7 +28,7 @@ export function useDataGridServer(fetchFunction, rowProcessor = defaultRowProces
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(false);
   const [rowCount, setRowCount] = useState(0);
-  const [paginationModel, setPaginationModel] = useState({ page: 0, pageSize: 10 });
+  const [paginationModel, setPaginationModel] = useState({ page: 0, pageSize: 100 });
   const [filterModel, setFilterModel] = useState({ items: [] });
 
   const fetchData = useCallback(async () => {
