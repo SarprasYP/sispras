@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { SignInPage } from "@toolpad/core";
 import { Box } from "@mui/material";
+import { useSearchParams } from "next/navigation";
 
 export default function SignIn() {
-  const router = useRouter();
+  const searchParam = useSearchParams();
   const [error, setError] = useState("");
 
   const handleSignInAttempt = async (provider, formData) => {
@@ -20,21 +20,17 @@ export default function SignIn() {
       // PERBAIKAN KUNCI:
       // 1. Gunakan `redirect: false` agar kita bisa mengontrol alur setelah login.
       const result = await signIn("credentials", {
-        redirect: false, 
+        redirect: false,
         email: email,
         password: password,
       });
 
       // 2. Cek jika ada `result.error`. Jika tidak ada, maka login berhasil.
       if (result.error) {
-        // Jika ada error (misal: "Email atau password salah"), tampilkan pesan
-        setError("Email atau password salah. Silakan coba lagi.");
-        // Kembalikan error agar komponen UI tahu login gagal
-        return { error: "Invalid credentials" }; 
+        return { error: result.error };
       } else {
-        // Jika TIDAK ada error, berarti login berhasil.
-        // Arahkan pengguna ke dashboard. `replace` lebih baik agar halaman login tidak ada di riwayat browser.
-        router.replace("/dashboard");
+        console.log
+        window.location.href = searchParam.get('callbackUrl');
       }
     }
   };

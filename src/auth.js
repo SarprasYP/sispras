@@ -33,15 +33,15 @@ export const authOptions = {
 
                     // Check if the password is correct
                     const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password);
-                    
+
                     if (!isPasswordCorrect) {
                         throw new Error("Email atau password salah.");
                     }
-                    
+
                     // If everything is correct, return the user object
                     // This object will be available in the 'user' parameter of the jwt callback
                     return {
-                        id: user._id.toString(), 
+                        id: user._id.toString(),
                         name: user.name,
                         email: user.email,
                         role: user.role
@@ -59,6 +59,11 @@ export const authOptions = {
         maxAge: 24 * 60 * 60, // 1 day
     },
     callbacks: {
+        async redirect(url, baseUrl) {
+            return url.startsWith(baseUrl)
+                ? url
+                : baseUrl
+        },
         async jwt({ token, user }) {
             // The 'user' object is only passed on the initial sign-in
             if (user) {
