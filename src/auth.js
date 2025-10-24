@@ -59,11 +59,6 @@ export const authOptions = {
         maxAge: 24 * 60 * 60, // 1 day
     },
     callbacks: {
-        async redirect(url, baseUrl) {
-            return url.startsWith(baseUrl)
-                ? url
-                : baseUrl
-        },
         async jwt({ token, user }) {
             // The 'user' object is only passed on the initial sign-in
             if (user) {
