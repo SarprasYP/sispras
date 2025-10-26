@@ -14,12 +14,9 @@ import {
   Alert,
   Divider,
   Chip,
-  CircularProgress,
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
-import { Download } from '@mui/icons-material';
+import { Edit, Delete } from '@mui/icons-material';
 
 // 3. Import komponen kustom
 import DialogConfirmation from "@/components/dashboard/DialogConfirmation";
@@ -71,6 +68,7 @@ export default function AssetPage() {
   // --- State untuk dialog konfirmasi ---
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
+  const [isDownloading, setIsDownloading] = useState(false);
 
   // --- State untuk notifikasi Snackbar ---
   const [snackbar, setSnackbar] = useState({
@@ -78,8 +76,6 @@ export default function AssetPage() {
     message: "",
     severity: "success",
   });
-
-  const [isDownloading, setIsDownloading] = useState(false);
 
   const handleDownloadInNewTab = () => {
     setIsDownloading(true);
@@ -261,14 +257,14 @@ export default function AssetPage() {
               )
             }
           >
-            <EditIcon />
+            <Edit />
           </IconButton>
           <IconButton
             size="small"
             color="error"
             onClick={() => handleOpenDeleteDialog(params.id)}
           >
-            <DeleteIcon />
+            <Delete />
           </IconButton>
         </Box>
       ),
@@ -280,37 +276,28 @@ export default function AssetPage() {
       <Divider sx={{ mb: 2 }} />
       <Box display="flex" justifyContent="end" gap={2}>
         <Button
-          variant="outlined"
-          color="primary"
-          onClick={
-            () => router.replace("/dashboard/inventaris-tetap/aset?page=1&limit=10&sortBy=createdAt&order=desc") // Ubah ke rute tambah aset
-          }
-          sx={{ mb: 2, px: 4 }}
-        >
-          Tampilkan Semua Aset
-        </Button>
-        <Button
           variant="contained"
           color="primary"
           onClick={handleDownloadInNewTab}
           disabled={isDownloading}
-          startIcon={isDownloading ? <CircularProgress size={20} color="inherit" /> : <Download />}
-          sx={{ mb: 2, px: 4 }}
+          startIcon={isDownloading ? <CircularProgress size={20} color="inherit" /> : ""}
+          sx={{ mb: 2}}
         >
-          {isDownloading ? 'Mengunduh...' : 'Download Laporan'}
+          {isDownloading ? 'Mengunduh...' : 'Unduh'}
         </Button>
         <Button
-          variant="contained"
           color="primary"
+          variant="contained"
           onClick={
             () => router.push("/dashboard/inventaris-tetap/aset/tambah") // Ubah ke rute tambah aset
           }
-          sx={{ mb: 2, px: 4 }}
+          sx={{
+            mb: 2,
+          }}
         >
-          Tambah
+         Tambah
         </Button>
       </Box>
-
       <DataGrid
         rows={rows}
         columns={columns}
